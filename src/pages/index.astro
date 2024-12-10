@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogPost from '../components/BlogPost.astro';
+import { posts } from '../utils/posts';
+---
+
+<Layout title="Duck Blog - Your Daily Dose of Duck Facts">
+  <section class="hero">
+    <h1>Welcome to Duck Blog</h1>
+    <p>Your source for all things duck-related!</p>
+  </section>
+
+  <section class="blog-posts">
+    {posts.map(post => (
+      <BlogPost {...post} />
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    color: #7f8c8d;
+  }
+
+  .blog-posts {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+</style>

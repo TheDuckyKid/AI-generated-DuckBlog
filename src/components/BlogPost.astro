@@ -1,0 +1,69 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  date: string;
+  image: string;
+  excerpt: string;
+}
+
+const { id, title, date, image, excerpt } = Astro.props;
+---
+<article class="blog-post">
+  <img src={image} alt={title} class="post-image" />
+  <div class="post-content">
+    <h2>{title}</h2>
+    <time>{date}</time>
+    <p>{excerpt}</p>
+    <a href={`/posts/${id}`} class="read-more">Read More →</a>
+  </div>
+</article>
+
+<style>
+  .blog-post {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .post-content {
+    padding: 1.5rem;
+  }
+
+  h2 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+  }
+
+  time {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #34495e;
+    line-height: 1.6;
+  }
+
+  .read-more {
+    display: inline-block;
+    color: #3498db;
+    text-decoration: none;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+</style>
